@@ -201,7 +201,133 @@ for i in range(len(cnt)):
     print(cnt[i])
 """
 
-#7 2606
+#7 2606 DFS
+"""
+n=int(input())
+m=int(input())
+graph=[[]*n for _ in range(n+1)]
+for _ in range(m):
+    a,b=map(int,input().split())
+    graph[a].append(b)
+    graph[b].append(a)
 
-n,m=map(int,input().split())
+cnt = 0
+visited=[0] * (n+1)
+def dfs(start):
+    global cnt
+    visited[start] = 1
+    for i in graph[start]:
+        if visited[i]==0:
+            dfs(i)
+            cnt += 1
+
+dfs(1)
+print(cnt)
+"""
+
+#8 1012
+"""
+from collections import deque
+
+dx=[0,0,1,-1]
+dy=[1,-1,0,0]
+
+t=int(input())
+
+def bfs(graph,a,b):
+    queue = deque()
+    queue.append((a,b))
+    graph[a][b] = 0
+
+    while queue:
+        x,y = queue.popleft()
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+            if nx<0 or ny<0 or nx>=n or ny>= m:
+                continue
+            if graph[nx][ny] == 1:
+                graph[nx][ny] = 0
+                queue.append((nx,ny))
+    return
+
+for i in range(t):
+    cnt = 0
+    n,m,k=map(int,input().split())
+    graph = [[0]*m for _ in range(n)]
+
+    for j in range(k):
+        x,y = map(int,input().split())
+        graph[x][y]=1
+
+    for a in range(n):
+        for b in range(m):
+            if graph[a][b] == 1:
+                bfs(graph,a,b)
+                cnt += 1
+    print(cnt)
+"""
+
+#9 7576
+"""
+from collections import deque
+
+m,n=map(int,input().split())
+graph=[]
+queue = deque([])
+for i in range(n):
+    graph.append(list(map(int,input().split())))
+
+    for j in range(m):
+        if graph[i][j]==1:
+            queue.append([i,j])
+
+dx, dy = [-1,1,0,0], [0,0,-1,1]
+
+def bfs():
+    while queue:
+        x,y = queue.popleft()
+        for i in range(4):
+            nx, ny = dx[i]+x, dy[i]+ y
+            if n>nx>=0 and m>ny>=0 and graph[nx][ny] == 0:
+                graph[nx][ny] = graph[x][y] + 1
+                queue.append([nx,ny])
+
+bfs()
+res=0
+for i in graph:
+    for j in i:
+        if j == 0:
+            print(-1)
+            exit(0)
+    res = max(res, max(i))
+print(graph)
+print(res-1)
+"""
+
+#10 1697
+
+print(1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
