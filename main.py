@@ -306,20 +306,168 @@ print(res-1)
 """
 
 #10 1697
+"""
+MAXNUM=100000
+from collections import deque
+n,k=map(int,input().split())
+visited=[False]*(MAXNUM+1)
 
-print(1)
+def bfs(v):
+    count=0
+    q=deque()
+    q.append([v,count])
 
+    while q:
+        x=q.popleft()
+        current=x[0]
+        count=x[1]
 
+        if visited[current] ==False:
+            visited[current]=True
 
+            if current == k:
+                return count
 
+            count += 1
 
+            if current * 2 <= MAXNUM:
+                q.append([current*2,count])
+            if current +1 <= MAXNUM:
+                q.append([current+1,count])
+            if current -1 >= 0:
+                q.append([current-1,count])
 
+    return count
 
+print(bfs(n))
+"""
 
+#11 11724
+"""
+from collections import deque
 
+n,m=map(int,input().split())
+visited=[False] * (n+1)
+graph = [[] for _ in range(n+1)]
 
+for _ in range(m):
+    x,y=map(int,input().split())
+    graph[x].append(y)
+    graph[y].append(x)
 
+def bfs(v):
+    q=deque()
+    q.append(v)
 
+    while q:
+        x=q.popleft()
+        if visited[x] == False:
+            visited[x]=True
+            for i in graph[x]:
+                q.append(i)
+
+cnt=0
+for i in range(1,n+1):
+    if visited[i]==False:
+        bfs(i)
+        cnt+=1
+
+print(cnt)
+"""
+
+#12 14502
+"""
+from collections import deque
+import copy
+
+n,m=map(int,input().split())
+graph=[]
+dx,dy=[0,0,-1,1],[-1,1,0,0]
+
+for i in range(n):
+    graph.append(list(map(int,input().split())))
+
+def bfs():
+    q = deque()
+    tmp_graph=copy.deepcopy(graph)
+    for i in range(n):
+        for j in range(m):
+            if tmp_graph[i][j] == 2:
+                q.append((i,j))
+    while q:
+        x,y=q.popleft()
+
+        for i in range(4):
+            nx=x+dx[i]
+            ny=y+dy[i]
+
+            if nx<0 or ny<0 or nx>=n or ny>= m:
+                continue
+            if tmp_graph[nx][ny] == 0:
+                tmp_graph[nx][ny] = 2
+                q.append((nx,ny))
+
+    global answer
+    cnt=0
+
+    for i in range(n):
+        cnt += tmp_graph[i].count(0)
+
+    answer = max(answer,cnt)
+
+def makewall(cnt):
+    if cnt == 3:
+        bfs()
+        return
+
+    for i in range(n):
+        for j in range(m):
+            if graph[i][j] == 0:
+                graph[i][j] = 1
+                makewall(cnt+1)
+                graph[i][j] = 0
+
+answer=0
+makewall(0)
+print(answer)
+"""
+
+#13 4963
+"""
+from collections import deque
+
+while True:
+    w,h=map(int,input().split())
+    if w==0 and h==0:
+        break
+    island = [list(map(int,input().split())) for _ in range(h)]
+
+    dx=[-1,-1,0,1,1,1,0,-1]
+    dy=[0,1,1,1,0,-1,-1,-1]
+
+    q=deque()
+    cnt=0
+    for i in range(h):
+        for j in range(w):
+            if island[i][j] == 1:
+                q.append((i,j))
+                island[i][j] = 2
+
+                while q:
+                    cx,cy = q.popleft()
+                    for k in range(8):
+                        nx=cx+dx[k]
+                        ny=cy+dy[k]
+                        if 0<=nx<h and 0<=ny<w:
+                            if island[nx][ny] == 1:
+                                q.append((nx,ny))
+                                island[nx][ny]=2
+                else:
+                    cnt += 1
+    print(cnt)
+"""
+
+#14 2468 // dfs
 
 
 
