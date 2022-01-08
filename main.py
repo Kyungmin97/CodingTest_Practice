@@ -628,10 +628,47 @@ print(answer)
 """
 
 #21 7568
+"""
+n=int(input())
+nlist=[]
+for _ in range(n):
+    w,h=map(int,input().split())
+    nlist.append((w,h))
+for i in nlist:
+    rank=1
+    for j in nlist:
+        if i[0] < j[0] and i[1] < j[1]:
+            rank+=1
+    print(rank, end=" ")
+"""
 
+#22 2309
+"""
+nlist=[]
+for _ in range(9):
+    nlist.append(int(input()))
 
-
-
+all=sum(nlist)
+result=all
+sw=False
+for i in range(9):
+    for j in range(i+1,9):
+        n1=nlist[i]
+        n2=nlist[j]
+        result=result-n1-n2
+        if result == 100:
+            nlist.remove(n1)
+            nlist.remove(n2)
+            sw=True
+            break
+        else:
+            result=all
+    if sw==True:
+        break
+nlist.sort()
+for i in nlist:
+    print(i)
+"""
 
 
 
