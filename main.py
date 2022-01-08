@@ -468,6 +468,181 @@ while True:
 """
 
 #14 2468 // dfs
+"""
+import sys
+sys.setrecursionlimit(100000)
+
+dx=[-1,1,0,0]
+dy=[0,0,-1,1]
+
+def dfs(x,y,h):
+    for i in range(4):
+        nx=x+dx[i]
+        ny=y+dy[i]
+
+        if(0<=nx<N) and (0<=ny<N):
+            if arr[nx][ny]>h and done[nx][ny]==0:
+                done[nx][ny]=1
+                dfs(nx,ny,h)
+
+N=int(input())
+arr=[list(map(int,input().split())) for _ in range(N)]
+ans=0
+
+for k in range(max(map(max,arr))):
+    cnt=0
+    done=[[0]*N for _ in range(N)]
+
+    for i in range(N):
+        for j in range(N):
+            if arr[i][j] > k and done[i][j] == 0:
+                done[i][j] = 1
+                cnt+=1
+                dfs(i,j,k)
+
+    ans=max(ans,cnt)
+print(ans)
+"""
+
+#15 10026
+"""
+import sys
+sys.setrecursionlimit(100000)
+input = sys.stdin.readline
+
+def dfs(x,y):
+    dx=[-1,1,0,0]
+    dy=[0,0,-1,1]
+    visited[y][x]=1
+    for i in range(4):
+        nx,ny=x+dx[i],y+dy[i]
+        if (0<=nx<=n) and(0<=ny<n) and arr[y][x]==arr[ny][nx] and visited[ny][nx]==0:
+            dfs(nx,ny)
+
+n=int(input())
+arr=[list(map(str,input())) for _ in range(n)]
+visited=[[0]*n for _ in range(n)]
+cnt1=0
+for i in range(n):
+    for j in range(n):
+        if visited[i][j]==0:
+            cnt1+=1
+            dfs(j,i)
+for i in range(n):
+    for j in range(n):
+        if arr[i][j]=='R':
+            arr[i][j]='G'
+cnt2=0
+visited=[[0]*n for _ in range(n)]
+for i in range(n):
+    for j in range(n):
+        if visited[i][j]==0:
+            cnt2+=1
+            dfs(j,i)
+print(cnt1,cnt2)
+"""
+
+#16 1987
+"""
+import sys
+sys.setrecursionlimit(10000)
+
+def dfs(x,y,cnt):
+"""
+
+#17 BruteForce 1065
+"""
+def hansu(num):
+    cnt=0
+    for i in range(1,num+1):
+        nlist=list(map(int,str(i)))
+        if i < 100:
+            cnt+=1
+        elif nlist[0]-nlist[1] == nlist[1]-nlist[2]:
+            cnt+=1
+    return cnt
+num=int(input())
+print(hansu(num))
+"""
+#18 4673
+"""
+def notself(num):
+    answer=[i for i in range(1,num+1)]
+    for i in range(1,10):
+        if i+i in answer:
+            answer.remove(i+i)
+
+    for i in range(10,100):
+        nlist=list(map(int,str(i)))
+        if i+nlist[0]+nlist[1] in answer:
+            answer.remove(i+nlist[0]+nlist[1])
+
+    for i in range(100,1000):
+        nlist=list(map(int,str(i)))
+        check=i+nlist[0]+nlist[1]+nlist[2]
+        if check in answer:
+            answer.remove(check)
+
+    for i in range(1000, 10000):
+        nlist = list(map(int, str(i)))
+        check = i + nlist[0] + nlist[1] + nlist[2]+nlist[3]
+        if check in answer:
+            answer.remove(check)
+    for i in range(len(answer)):
+        print(answer[i])
+
+notself(10000)
+"""
+
+#19 2798
+"""
+def fun1():
+    nlist=list(map(int,input().split()))
+    nlist.sort(reverse=True)
+    answer=0
+    for i in range(n):
+        for j in range(i+1,n):
+            for k in range(j+1,n):
+                if nlist[i]+nlist[j]+nlist[k]>m:
+                    continue
+                else:
+                    answer=max(answer,nlist[i]+nlist[j]+nlist[k])
+    print(answer)
+
+n,m=map(int,input().split())
+fun1()
+"""
+
+#20 2231
+"""
+num=int(input())
+answer=0
+for n in range(1,num):
+    k=n
+    for i in str(n):
+        n+=int(i)
+    if n == num:
+        answer=k
+        break
+print(answer)
+"""
+
+#21 7568
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
