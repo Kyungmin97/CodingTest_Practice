@@ -670,12 +670,42 @@ for i in nlist:
     print(i)
 """
 
+#23 2839
+"""
+n=int(input())
+count=0
 
+count+=n//5
+n=n%5
+if n==1 and count>0:
+    count+=1
+elif n==2 and count>1:
+    count+=2
+elif n==3:
+    count+=1
+elif n==4 and count>0:
+    count+=2
+elif n==0:
+    count+=0
+else:
+    count=-1
 
+print(count)
+"""
 
-
-
-
+#24 11399
+"""
+n=int(input())
+nlist = list(map(int,input().split()))
+nlist.sort()
+answer=0
+wtime=0
+for i in nlist:
+    wtime+=i
+    answer+=wtime
+    #print("wtime: {0}\tanswer: {1}".format(wtime,answer))
+print(answer)
+"""
 
 
 
