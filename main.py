@@ -707,15 +707,78 @@ for i in nlist:
 print(answer)
 """
 
+#25 11047
+"""
+n,k=map(int,input().split())
+nlist=[]
+for _ in range(n):
+    nlist.append(int(input()))
+count=0
+amount=k
+nlist.sort(reverse=True)
+while amount>0:
+    for i in nlist:
+        if i<=amount:
+            count+=amount//i
+            amount=amount%i
+print(count)
+"""
 
+#26 101855
+"""
+n=int(input())
+nlist=[]
+for _ in range(n):
+    nlist.append(list(map(int,input().split())))
 
+nlist=sorted(nlist,key=lambda x: x[0])
+nlist=sorted(nlist,key=lambda x: x[1])
+count=0
+end=0
+for i in nlist:
+    if end<=i[0]:
+        count+=1
+        end=i[1]
+print(count)
+"""
 
+#27 1026
+"""
+#입력
+n=int(input())
+a=(list(map(int,input().split())))
+b=(list(map(int,input().split())))
 
+#계산
+answer = 0
+for i in range(n):
+    answer+=min(a)*max(b)
+    a.pop(a.index(min(a)))
+    b.pop(b.index(max(b)))
 
+print(answer)
+"""
 
+#28 1541
+"""
+s=input().split('-')
 
+for i in s:
+    if '+' in i:
+        sum=i.split('+')
+        suum=0
+        for j in sum:
+            suum+=int(j)
+        s[s.index(i)]=suum
+    else:
+        s[s.index(i)]=int(i)
 
+answer=s[0]+s[0]
+for i in s:
+    answer-=i
 
+print(answer)
+"""
 
 
 
