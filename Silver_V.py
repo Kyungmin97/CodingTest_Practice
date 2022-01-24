@@ -20,7 +20,7 @@ for word in wlist2:
 print(len(wlist))
 print(wlist)
 """
-
+"""
 N = int(input())
 result = N
 for i in range(0,N):
@@ -32,4 +32,60 @@ for i in range(0,N):
             result-=1
             break
 print(result)
+"""
+clist=['z=' , 's=' , 'nj' , 'lj' , 'd-' , 'dz=' , 'c-' , 'c=']
+word=list(input())
+
+count=len(word)
+for i in range(len(word)-1):
+    if word[i]+word[i+1] in clist:
+        count-=1
+
+    if i==len(word)-2:
+        continue
+    if word[i]+word[i+1]+word[i+2] =='dz=':
+        count-=1
+
+print(count)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
