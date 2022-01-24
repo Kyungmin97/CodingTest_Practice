@@ -31,7 +31,7 @@ for i in range(0,N):
         if word[j] in word[j+1:]:
             result-=1
             break
-print(result)
+print(result)"""
 """
 clist=['z=' , 's=' , 'nj' , 'lj' , 'd-' , 'dz=' , 'c-' , 'c=']
 word=list(input())
@@ -47,8 +47,37 @@ for i in range(len(word)-1):
         count-=1
 
 print(count)
+"""
+
+"""n=int(input())
+nlist=[]
+for _ in range(n):
+    nlist.append(int(input()))
+
+nlist.sort()
+for i in nlist:
+    print(i)"""
+
+"""n,m=map(int,input().split())
+
+def gcd(a,b):
+    while b>0:
+        a,b=b,a%b
+    return a
+
+def lcm(a,b):
+    return a*b // gcd(a,b)
 
 
+print(gcd(n,m))
+print(lcm(n,m))
+"""
+
+
+"""n=list(input())
+n.sort(reverse=True)
+for i in n:
+    print(i, end='')"""
 
 
 
