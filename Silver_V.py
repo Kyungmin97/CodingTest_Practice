@@ -144,6 +144,3 @@ for i in nlist:
 
 
 
-
-
-
