@@ -78,6 +78,35 @@ print(lcm(n,m))
 n.sort(reverse=True)
 for i in n:
     print(i, end='')"""
+"""
+n=int(input())
+nlist=[]
+for _ in range(n):
+    w,h=map(int,input().split())
+    nlist.append((w,h))
+for i in nlist:
+    rank=1
+    for j in nlist:
+        if i[0] < j[0] and i[1] < j[1]:
+            rank+=1
+    print(rank, end=" ")"""
+"""
+n=int(input())
+nlist=[]
+for _ in range(n):
+    nlist.append(int(input()))
+nlist.sort()
+for i in nlist:
+    print(i)
+"""
+
+
+
+
+
+
+
+
 
 
 
